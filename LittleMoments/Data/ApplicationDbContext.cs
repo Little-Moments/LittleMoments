@@ -6,6 +6,10 @@ namespace LittleMoments.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
     : IdentityDbContext<ApplicationUser>(options)
 {
+    public DbSet<Child> Children { get; set; } = null!;
+
+    public DbSet<LittleMoment> LittleMoments { get; set; } = null!;
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
