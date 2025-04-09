@@ -6,7 +6,7 @@ namespace LittleMoments.Data;
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
     : IdentityDbContext<ApplicationUser>(options)
 {
-    public DbSet<Child> Children { get; set; } = null!;
+    public DbSet<Kid> Kids { get; set; } = null!;
 
     public DbSet<LittleMoment> LittleMoments { get; set; } = null!;
     
@@ -14,8 +14,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         base.OnModelCreating(builder);
 
-        builder.Entity<Child>().HasOne(x => x.Owner).WithMany(y => y.OwnedChildren);
+        builder.Entity<Kid>().HasOne(x => x.Owner).WithMany(y => y.OwnedKids);
         
-        builder.Entity<Child>().HasMany(x => x.GrantedUsers).WithMany(y => y.GrantedChildren);
+        builder.Entity<Kid>().HasMany(x => x.GrantedUsers).WithMany(y => y.GrantedKids);
     }
 }

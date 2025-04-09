@@ -1,7 +1,7 @@
 ﻿
 namespace LittleMoments.Data;
 
-public class Child
+public class Kid
 {
     public int Id { get; set; }
 

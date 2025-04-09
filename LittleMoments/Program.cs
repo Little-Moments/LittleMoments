@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using LittleMoments.Components;
 using LittleMoments.Components.Account;
 using LittleMoments.Data;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,12 +30,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+builder.Services.AddScoped<ThemeService>();
 
 var app = builder.Build();
 

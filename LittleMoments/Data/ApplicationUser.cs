@@ -4,7 +4,7 @@ namespace LittleMoments.Data;
 
 public class ApplicationUser : IdentityUser
 {
-    public ICollection<Child> OwnedChildren { get; set; } = new List<Child>();
+    public ICollection<Kid> OwnedKids { get; set; } = new List<Kid>();
 
-    public ICollection<Child> GrantedChildren { get; set; } = new List<Child>();
+    public ICollection<Kid> GrantedKids { get; set; } = new List<Kid>();
 }

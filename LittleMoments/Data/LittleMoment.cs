@@ -10,5 +10,5 @@ public class LittleMoment
 
     public required int ChildId { get; set; }
     
-    public Child? Child { get; set; }
+    public Kid? Child { get; set; }
 }
